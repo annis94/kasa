@@ -1,0 +1,442 @@
+@use 'sass:math';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+// Variables
+$primary-color: #FF6060;
+$secondary-color: #F6F6F6;
+$text-color: #2C3E50;
+$breakpoint-mobile: 768px; 
+
+// Mixins
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// Layout
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1240px;
+  width: 100%;
+
+  @include mobile {
+    padding: 0 15px; 
+    max-width: 100%; 
+  }
+}
+
+// Header
+.header {
+  padding: 2rem 0;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 50px;
+
+    @include mobile {
+      height: 30px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    @include mobile {
+      display: -webkit-box;
+      gap: 1rem; 
+    }
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover,
+      &.active {
+        text-decoration: underline;
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// Banner
+.banner {
+  position: relative;
+  height: 220px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    height: 150px; 
+    margin-bottom: 1rem; 
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+
+    @include mobile {
+      font-size: 1.5rem; 
+    }
+  }
+}
+
+// Gallery
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background: $secondary-color;
+  border-radius: 25px;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
+    padding: 1rem; 
+  }
+}
+
+// Card
+.card {
+  position: relative;
+  height: 340px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @include mobile {
+    height: 255px; 
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    padding: 1rem;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__title {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+
+    @include mobile {
+      font-size: 1rem; 
+    }
+  }
+}
+
+// Collapse
+.collapse {
+  margin-bottom: 1rem;
+
+  &__header {
+    background: $primary-color;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include mobile {
+      padding: 3.75px 10px; 
+    }
+  }
+
+  &__content {
+    background: $secondary-color;
+    padding: 1.5rem;
+    border-radius: 0 0 5px 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include mobile {
+      padding: 1rem; 
+    }
+  }
+}
+
+// Slideshow
+.slideshow {
+  position: relative;
+  height: 415px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    height: 255px; 
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    color: white;
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: 500;
+  }
+}
+
+
+// Error page
+.error {
+  text-align: center;
+  padding: 2rem;
+ 
+  &__code {
+    font-size: 10rem;
+    font-weight: 700;
+    color: $primary-color;
+   
+    @include mobile {
+      font-size: 6rem;
+    }
+  }
+ 
+  &__text {
+    font-size: 2rem;
+    margin: 2rem 0;
+   
+    @include mobile {
+      font-size: 1.25rem;
+    }
+  }
+ 
+  &__link {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+}
+
+// Footer
+.footer {
+  background: black;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+
+  @include mobile {
+    padding: 1rem 0; 
+  }
+
+  &__logo {
+    filter: brightness(0) invert(1);
+    height: 40px;
+    margin-bottom: 1rem;
+
+    @include mobile {
+      height: 30px; 
+    }
+  }
+}
+
+
+
+
+.housing {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 20px;
+
+    @include mobile {
+      flex-direction: column; 
+    }
+  }
+
+  &__info {
+    flex: 1;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+
+      @include mobile {
+        font-size: 1.5rem; 
+      }
+    }
+
+    p {
+      color: $text-color;
+      font-size: 1.125rem;
+
+      @include mobile {
+        font-size: 1rem; 
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      span {
+        background: $primary-color;
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 10px;
+        font-size: 0.875rem;
+
+        @include mobile {
+          font-size: 0.75rem; 
+        }
+      }
+    }
+  }
+
+  &__host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include mobile {
+      flex-direction: row-reverse; 
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .host__info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        @include mobile {
+          width: 30px; 
+          height: 30px;
+        }
+      }
+
+      p {
+        color: $primary-color;
+        font-size: 1rem;
+
+        @include mobile {
+          font-size: 0.875rem; 
+        }
+      }
+    }
+
+    .stars {
+      display: flex;
+      gap: 5px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+
+        @include mobile {
+          width: 16px; 
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 2rem;
+
+    @include mobile {
+      grid-template-columns: 1fr; 
+      gap: 20px;
+    }
+  }
+}
