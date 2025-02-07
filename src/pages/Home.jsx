@@ -12,7 +12,7 @@ const Home = () => {
       />
       
       <div className="gallery">
-      {logements.logements[0].map((logement) => (  
+      {logements.logements.map((logement) => (  
   <Card
     key={logement.id}
     id={logement.id}

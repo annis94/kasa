@@ -7,7 +7,7 @@ import { Star } from 'lucide-react';
 
 const Housing = () => {
   const { id } = useParams();
-  const logement = logements.logements[0].find((l) => l.id === id);
+  const logement = logements.logements.find((l) => l.id === id);
 
   if (!logement) {
     return <Navigate to="/404" />;
