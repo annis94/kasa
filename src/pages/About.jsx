@@ -5,7 +5,7 @@ import Collapse from '../components/Collapse';
 const About = () => {
   return (
     <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0' }}>
-      <Banner image="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9" />
+<Banner image="https://s3-alpha-sig.figma.com/img/56fa/e17e/b9995860bb6384a77ca7dc9bf52da3be?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ipEH5pECve55XCOVUcq9g0H83chmjaqX69ytxvyKS6jOxZfgG2tl8yEt-Vlp0xRhS0Jdnv9XKHJulNiQXtEAuWlCnQCUykWR5dn8nEVpH9-GKAfikBCrDio8XzVBQgb0xXRTHSqiumBuWxLzlBdnpfiKtThBtPHy~197KG7CD3b0UGooQd0AVoBQ0kmhLPU-ofwYegeKjE6IvKvSPCNeOkPloiFJkBT0rPT9k~X7Te28hvr~Zkg39ZJ9JS-sAG3S5ubj9cKculsJSXjKD1AutFPv~be8luVDtaNgOXUFtNOwzHnK2vrL9jUTLyqiKon053Llokn-3lbTKmwZapSbRA__" />
 
       <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
         <Collapse title="Fiabilité" variant="about">

@@ -3,10 +3,32 @@ import { useParams, Navigate } from 'react-router-dom';
 import Slideshow from '../components/Slideshow';
 import Collapse from '../components/Collapse';
 import logements from '../data/logements.json';
-import { Star } from 'lucide-react';
+
+
+const Star = ({ filled }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill={filled ? "#FF6060" : "#E3E3E3"}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+      stroke={filled ? "#FF6060" : "#E3E3E3"}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 
 const Housing = () => {
+    // Récupère l'ID du logement depuis l'URL
   const { id } = useParams();
+
+    // Recherche du logement correspondant dans les données
   const logement = logements.logements.find((l) => l.id === id);
 
   if (!logement) {
@@ -41,14 +63,11 @@ const Housing = () => {
             />
           </div>
           <div className="stars">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                fill={i < parseInt(logement.rating) ? '#FF6060' : '#E3E3E3'}
-                color={i < parseInt(logement.rating) ? '#FF6060' : '#E3E3E3'}
-              />
-            ))}
-          </div>
+  {[...Array(5)].map((_, i) => (
+    <Star key={i} filled={i < parseInt(logement.rating)} />
+  ))}
+</div>
+
         </div>
       </div>
 

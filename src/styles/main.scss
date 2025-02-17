@@ -76,7 +76,6 @@ body {
       &:hover,
       &.active {
         text-decoration: underline;
-        color: $primary-color;
       }
     }
   }
@@ -187,7 +186,7 @@ body {
   margin-bottom: 1rem;
 
   &__header {
-    background: $primary-color;
+    background: #FF6060;
     color: white;
     padding: 0.75rem 1rem;
     border-radius: 5px;
@@ -198,24 +197,29 @@ body {
     width: 100%;
     box-sizing: border-box;
 
-    @include mobile {
-      padding: 3.75px 10px; 
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+
+    &--open {
+      transform: rotate(180deg);
     }
   }
 
   &__content {
-    background: $secondary-color;
+    background: #F6F6F6;
     padding: 1.5rem;
     border-radius: 0 0 5px 5px;
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
-
-    @include mobile {
-      padding: 1rem; 
-    }
   }
 }
+
 
 // Slideshow
 .slideshow {

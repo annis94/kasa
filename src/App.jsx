@@ -8,7 +8,9 @@ import './styles/main.scss';
 
 function App() {
   return (
+        // Active le routage dans l'application
     <BrowserRouter>
+          {/* Layout global qui contient des éléments communs à toutes les pages (ex: header, footer) */}
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
